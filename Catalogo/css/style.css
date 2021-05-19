@@ -1,0 +1,263 @@
+/**Paleta de colores custome propierties*/ 
+:root{
+    --blanco: #ffffff;
+    --gris1: #808080;
+    --negro: #000000;    
+    --secundario: #0897a2;
+    --gris2: #c0c0c0;
+}
+/*GLOBALES
+/* "apply a natural box layout model to all elements, but allowing components to change" 
+*/
+html {
+  box-sizing: border-box; /* hack para transformar px a rem-BOXMODEL */
+  font-size: 62.5%;
+  scroll-snap-type: y proximity;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+    background-image: linear-gradient(to top, var(--gris2) 0%, var(--blanco) 100%);
+    font-family: 'KoHo', sans-serif;
+    font-weight: 500;
+    font-size: 16px; /** 1rem = 10px */
+}
+/**Selector clase inician con "." */
+/** Selector ID, se puede tener multiples ID'S por pagina, pero no pueden repetirse en una misma inician con "#" */
+/**Selector Atributo selecciona elementos basado en un atributo "[src="logo.jpg"]{color:blue;}"*/
+/**combinacion de descendentes selecciona elementos hijos cuyo padre sea una clase, ID en especifico*/
+/**Todos los hijos .cliente>p{color:blue;} regla que aplica a todos los parrafos hijos*/
+.contenedor{
+    max-width: 120rem; 
+    /**1200px*/
+    margin:0 auto;
+}
+.boton{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: .5rem;
+    width: 90%;
+    border: none;
+}
+@media (min-width: 768px) {
+  .boton{
+      width: auto;
+  }
+}
+.boton:hover {
+    cursor: pointer;
+}
+.enviar .boton{
+ width: 100%;
+}
+.sombra{
+    -webkit-box-shadow: 5px 6px 29px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 6px 29px -20px rgba(0,0,0,0.75);
+    box-shadow: 5px 6px 29px -20px rgba(0,0,0,0.75);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+/*TIPOGRAFIA*/
+h1 {
+    font-size: 3.8rem; /**28px*/
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3{
+    font-size: 1.8rem;
+}
+h1, h2 ,h3{
+    text-align: center;
+}
+/*Titulos*/
+.titulo{
+    margin: 0.1rem;
+    font-weight:300; 
+}
+/**Selector elemento span,h1,html,etc..*/
+.titulo span{ 
+    font-size: 1.8rem;
+}
+/* Utilidades **/
+.w-sm-100{
+    width: 100%;
+}
+@media (min-width: 768px) {
+  .w-sm-100{
+      width:auto;
+  }
+}
+.flex{
+    display: flex;
+}
+.alinear-derecha{
+    justify-content: flex-end;
+}
+
+/*Navegacion Principal */
+.nav-bg{
+    background-color: var(--negro);
+}
+.navegacion-principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/** para un telefono
+@media (min-width: 480px) {
+}
+*/
+/** para una tablet*/
+@media (min-width: 768px) {
+    .navegacion-principal{
+      flex-direction: row;
+      justify-content:space-around;   
+    }
+  }
+/**laptop o pc de escritorio
+@media (min-width: 1140px ) {
+}
+*/
+/**laptop o pc de escritorio
+@media (min-width: 1400px ) {
+}
+*/
+.navegacion-principal a{
+   display: block;
+   text-align: center;
+   color: var(--gris2);
+   text-decoration: none;
+   font-size: 1.8rem;
+   padding: 1rem;
+}
+.navegacion-principal a:hover {
+  color: var(--blanco);
+ }
+/** DISPLAY*/
+/**display:block uno debajo del otro sin importar tamaño o content*/
+/**display:inline uno a la derecha del otro una ves que haya tomado el espacio que requiere*/
+/**Ningun elemento tiene un display: flex o display: grid por defaul*/
+/**no es necesario especificar un display para cada elemento, salvo que desees modificar el que viene por default*/ 
+/**Flexbox fue diseñado como un modelo unidimensional para crear layouts*/
+/**DOS EJES FILA(ROW) COLUMNA (COLUMN)*/
+/** ROW ES APLICADO POR DEFAULT AL DEFINIR UN DISPLAY FLEX*/
+/**LOS OTORS VALORES SON ROW-REVERSE, COLUMN Y COLUMN-REVERSE*/
+/** FLEXBOX es especialmente diseñado paara alinear elementos en tus diseños*/
+/** tecnologia utilizada unicamente para los layouts y sustituye a los floats o table-cell*/
+/** align-items: center es para centrar cuando el flex-direction tenga valor column y justify-content se utiliza para row*/
+
+/*Hero*/
+.hero{
+    background-color: var(--gris);
+    position: relative;
+    margin-bottom: 2rem;
+}
+.contenido-hero{
+    /**position: absolute;*/
+    /**las lineas 105-108 centran todo contenido*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 30rem;
+}
+
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco); 
+}
+.ubicacion{
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Servicios */
+.servicio,
+.navegacion-principal,
+.formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1.5rem;
+    }
+}
+.servicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.servicio h3 {
+    color: var(--gris1);
+    font-weight: normal;
+}
+.servicio p{
+     line-height: 2;
+     text-align: center;
+}
+.servicio .iconos{
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--secundario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*Contacto */
+.formulario{
+background-color: var(--gris1);
+width: min( 60rem, 100%);
+margin: 0 auto;
+padding: 2rem;
+border-radius: 1rem;
+}
+.formulario fieldset{
+    border: none;
+}
+.formulario legend{
+    
+    font-size: 1.8rem;
+    color: var(--blanco);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+}
+.contenedor-campos{
+
+}
+.campo{
+    margin-bottom: 1rem;
+}
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.campo input{
+    background-color: var(--blanco);
+}
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
